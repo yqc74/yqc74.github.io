@@ -14,5 +14,6 @@ layout: page
 ## About this web
 
 - 关于这个网站真的付出了我很多心血(bushi，详情可以见blog中20240418文章<br>
-- 本[网站网址]("https://yqc74.github.io//")，仅学习使用
+- 本[Github仓库](https://github.com/yqc74/yqc74.github.io)地址，仅学习使用
+- 本[网站网址](https://yqc74.github.io//)，仅学习使用
 
