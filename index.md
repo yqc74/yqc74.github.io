@@ -4,11 +4,13 @@ layout: page
 
 # About Me
 
-只是一个新手初次想要学习Web搭建的实验品QAQ
+只是一个初学者想要学习Web搭建的实验品QAQ
+大三迷茫ing
+2024:04:18 创建
 
 ---
 
 ## About this web
 
-此网站是我从Github作者"https://github.com/GuangLun2000/GuangLun2000.github.io"此处修改得来
+本网站链接"yqc74.github.io"
 
