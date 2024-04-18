@@ -8,7 +8,7 @@ title: Hobbies
 
 ## My Genshin
 
-He's been playing a game lately and it's my favorite.
+这是我最爱的游戏（目前为止）！！
 
 <div>
 <img src="/images/Genshin01.png">
@@ -17,7 +17,7 @@ He's been playing a game lately and it's my favorite.
 
 ## Cute Cat
 
-She is my love. Her name is Qbao (Q宝).
+这是原作者养的猫猫，很可爱所以没删（名字叫Q宝）
 
 <div>
 <img src="/images/cat.JPG">
