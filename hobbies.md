@@ -15,9 +15,15 @@ She is my love. Her name is Qbao (Q宝).
 </div>
 <br>
 
-## Chat with me
+## My Genshin
 
-**Jan 2023:** I have set up the [online-coffee-time](https://calendly.com/lancecai/meet-with-lance) (Inspired by [Shangzhe Wu](https://elliottwu.com/)). Welcome to chat with me!
+He's been playing a game lately and it's my favorite.
+
+<div>
+<img src="/images/Genshin01.png">
+</div>
+<br>
+
 
 <!-- Calendly inline widget begin -->
 
