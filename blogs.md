@@ -8,7 +8,7 @@ title: Blogs
 
 ### 2024
 
-- [2024/4/18第一次尝试](https://caihanlin.com/blogs/aaai-24/)
+- [2024/4/18第一次尝试](https://yqc74.github.io/blogs/20240418/)
 
 <br>
 
