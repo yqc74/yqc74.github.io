@@ -15,8 +15,5 @@ title: Blogs
 
 ## Web Star History
 
-- 如果你喜欢这个站点风格，请为原作者的[Github仓库](https://github.com/GuangLun2000/GuangLun2000.github.io)留下一个Star吧
+- 如果你喜欢这个站点风格，请为原作者的[Github仓库](https://github.com/GuangLun2000/GuangLun2000.github.io)留下一个Star吧<br>
 
-<br>[![Star History Chart](https://api.star-history.com/svg?repos=GuangLun2000/GuangLun2000.github.io&type=Date)](https://star-history.com/#GuangLun2000/GuangLun2000.github.io&Date)
-
-<br>
