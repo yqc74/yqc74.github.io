@@ -6,15 +6,6 @@ title: Hobbies
 
 # Hobbies
 
-## My Cat
-
-She is my love. Her name is Qbao (Q宝).
-
-<div>
-<img src="/images/cat.JPG">
-</div>
-<br>
-
 ## My Genshin
 
 He's been playing a game lately and it's my favorite.
@@ -23,6 +14,17 @@ He's been playing a game lately and it's my favorite.
 <img src="/images/Genshin01.png">
 </div>
 <br>
+
+## Cute Cat
+
+She is my love. Her name is Qbao (Q宝).
+
+<div>
+<img src="/images/cat.JPG">
+</div>
+<br>
+
+
 
 
 <!-- Calendly inline widget begin -->
