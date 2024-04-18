@@ -9,7 +9,7 @@ title: Blogs
 ### 2024
 
 - [2024/4/18第一次尝试](https://yqc74.github.io/blogs/20240418/)<br>
-- [18岁，缓慢受锤的黄金年代🎂](https://caihanlin.com/blogs/18yrs)
+- [18岁，缓慢受锤的黄金年代](https://caihanlin.com/blogs/18yrs)
 
 <br>
 
