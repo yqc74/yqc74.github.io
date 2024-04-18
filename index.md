@@ -12,5 +12,5 @@ layout: page
 
 ## About this web
 
-本网站链接("http://yqc74.github.io/")
+本[网站网址]("http://yqc74.github.io/")，仅学习使用
 
