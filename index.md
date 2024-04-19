@@ -4,14 +4,12 @@ layout: page
 
 # About Me
 
+<img src="/images/brother.png" class="floatpic" width="360" height="480">
 该博客只是一个初学者想要学习Web搭建的实验品QAQ<br>
 学习能力差，导致整整花了两天才搭建成功...<br>
 大三迷茫ing<br>
-And 我有一个愚蠢但是特别可爱的欧豆豆哦
-<div>
-<img src="/images/brother.png">
-</div>
-2024-04-18 创建
+And 我有一个愚蠢但是特别可爱的欧豆豆哦<br>
+本博客于 2024-04-18 创建
 
 ---
 
