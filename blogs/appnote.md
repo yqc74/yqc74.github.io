@@ -24,3 +24,11 @@ title: appnote
 
 [sms](https://sms-activate.org/cn)
 
+
+
+# 删除卸载应用
+
+cmd+R
+
+%appdata%
+%programdata%
