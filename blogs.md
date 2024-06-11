@@ -14,6 +14,9 @@ title: Blogs
 - [2024/4/18](https://yqc74.github.io/blogs/20240418/)<br>
 - [应用笔记](https://yqc74.github.io/blogs/appnote/)<br>
 
+#### 6月
+- [JavaWeb](https://yqc74.github.io/blogs/JavaWeb/)<br>
+
 <br>
 
 ## Web Star History
