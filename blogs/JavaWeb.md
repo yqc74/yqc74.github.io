@@ -118,9 +118,107 @@ export default {
 
 #### reactive()函数
 
+用于创建一个响应式对象或数组，将普通的对象或数组作为参数传给该函数即可。
+
+```html
+<template>
+    {{ obj.message }}
+</template>
+<script setup>
+    import { reactive } from 'vue'
+    const obj = reactive({ message: '不畏浮云遮望眼，自缘身在最高层' })
+    setTimeout(() => {
+      obj.message = '欲穷千里目，更上一层楼'
+    }, 2000)
+</script>
+```
+
+#### toRef()函数
+
+用于将响应式对象中的单个属性转换为响应式数据。
+
+```html
+<template>
+  <div>message的值：{{ message }}</div>
+  <div>obj.message的值：{{ obj.message }}</div>
+</template>
+<script setup>
+    import { reactive, toRef } from 'vue'
+    const obj = reactive({ message: '黑发不知勤学早，白首方悔读书迟' })
+    const message = toRef(obj, 'message')
+    setTimeout(() => {
+      message.value = '少壮不努力，老大徒伤悲'
+    }, 2000)
+</script>
+```
+
+#### toRefs()函数
+
+用于将响应式对象中的所有属性转换为响应式数据。
+
+```html
+<template>
+  <div>message的值：{{ message }}</div>
+  <div>obj.message的值：{{ obj.message }}</div>
+</template>
+<script setup>
+    import { reactive, toRefs } from 'vue'
+    const obj = reactive({ message: '盛年不重来，一日难再晨' })
+    let { message } = toRefs(obj)
+    setTimeout(() => {
+      message.value = '及时当勉励，岁月不待人'
+    }, 2000)
+</script>
+```
 
 
-toRef()函数
 
-toRefs()函数
+## Vue指令
 
+| **指令**  | **作用**                                            |
+| --------- | --------------------------------------------------- |
+| v-bind    | 为HTML标签绑定属性值，如设置  href , css样式等      |
+| v-model   | 在表单元素上创建双向数据绑定                        |
+| v-on      | 为HTML标签绑定事件                                  |
+| v-if      | 条件性的渲染某元素，判定为true时渲染,否则不渲染     |
+| v-else    |                                                     |
+| v-else-if |                                                     |
+| v-show    | 根据条件展示某元素，区别在于切换的是display属性的值 |
+| v-for     | 列表渲染，遍历容器的元素或者对象的属性              |
+
+- v-bind:  为HTML标签绑定**属性值**，如设置  href , css样式等。当vue对象中的数据模型发生变化时，标签的属性值会随之发生变化。
+
+- v-model： 在表单元素上创建**双向数据绑定**。什么是双向？
+
+  -  vue对象的data属性中的数据变化，视图展示会一起变化
+  -  视图数据发生变化，vue对象的data属性中的数据也会随着变化。
+  -  ==**v-model内部会为不同的元素绑定不同的属性和事件**==
+     -  textarea元素和text类型的input元素会绑定value属性和input事件。
+     -  checkbox类型的input元素和radio类型的input元素会绑定checked属性和change事件。
+     -  select元素会绑定value属性和change事件。
+
+  - **双向绑定的作用：可以获取表单的数据的值，然后提交给服务器**
+
+    | 修饰符  | 作用                                    |
+    | :------ | --------------------------------------- |
+    | .number | 自动将用户输入的值转换为数字类型        |
+    | .trim   | 自动过滤用户输入的首尾空白字符          |
+    | .lazy   | 在change事件而非input事件触发时更新数据 |
+
+- v-on: 用来给html标签绑定**事件**的。**需要注意的是如下2点**：
+
+  - v-on语法给标签的事件绑定的函数，必须是vue对象中声明的函数
+
+
+  - v-on语法绑定事件时，事件名相比较js中的事件名，没有on
+
+- v-if：根据布尔值切换元素的显示或隐藏状态，本质是通过操作DOM元素来切换显示状态。
+
+- v-show：通过为元素添加或移除display: none样式来实现元素的显示或隐藏。
+  - **当需要频繁切换某个元素的显示或隐藏时，使用v-show会更节省性能开销；而当只需要切换一次显示或隐藏时，使用v-if更合理。**
+
+- v-for：
+  - 根据数组渲染列表：<标签名 v-for="(item, index) in arr"></标签名>
+  - 根据对象渲染列表：<标签名 v-for="(item, name, index) in obj"></标签名>
+  - 根据数字渲染列表：<标签名 v-for="(item, index) in num"></标签名>
+  - 根据字符串渲染列表：<标签名 v-for="(item, index) in str"></标签名>
