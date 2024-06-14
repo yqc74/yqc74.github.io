@@ -222,3 +222,229 @@ export default {
   - 根据对象渲染列表：<标签名 v-for="(item, name, index) in obj"></标签名>
   - 根据数字渲染列表：<标签名 v-for="(item, index) in num"></标签名>
   - 根据字符串渲染列表：<标签名 v-for="(item, index) in str"></标签名>
+
+
+
+# 组件基础
+
+## 动态组件
+
+- 语法 ： <component :is="要渲染的组件"></component>
+
+
+
+## 组件缓存
+
+- 组件缓存可以使组件创建一次后，不会被销毁。在Vue中可以通过KeepAlive组件来实现组件缓存。
+
+- 问题：当一个组件被销毁后又重新创建时，组件无法保持销毁前的状态。
+
+- 语法
+
+  ```html
+  <KeepAlive>
+  	<!-- 需要缓存的组件 -->
+  </KeepAlive>
+  ```
+
+  
+
+### 组件缓存相关的生命周期函数
+
+```html
+// onActivated()生命周期函数被激活
+onActivated(() => { })
+// onDeactivated()生命周期函数被缓存
+onDeactivated(() => { })
+
+<script setup>
+import { ref, onMounted, onUnmounted, onActivated, onDeactivated } from 'vue'
+onActivated(() => {
+  console.log('MyLeft组件被激活了')
+})
+onDeactivated(() => {
+  console.log('MyLeft组件被缓存了')
+})
+</script>
+```
+
+
+
+### KeepAlive组件的常用属性
+
+| 属性    | 类别               | 说明                       |
+| ------- | ------------------ | -------------------------- |
+| include | 字符串或正则表达式 | 只有名称匹配的组件会被缓存 |
+| exclude | 字符串或正则表达式 | 名称匹配的组件不会被缓存   |
+| max     | 数字               | 最多可以缓存组件实例个数   |
+
+==**注意**==：在使用KeepAlive组件对名称匹配的组件进行缓存时，它会根据组件的name选项进行匹配。如果没有使用setup语法糖，必须手动声明name选项；如果使用了setup语法糖，Vue会根据文件名自动生成name选项，无须手动声明name选项。例如，在MyLeft.vue文件中使用setup语法糖时，自动生成的组件名为MyLeft。
+
+- 非语法糖定义name选项的示例代码
+
+  ```html
+  <script>
+      export default {
+        name: 'MyComponent'
+      }
+  </script>
+  ```
+
+  
+
+# 插槽
+
+- 插槽是指开发者在封装组件时不确定的、希望由组件的使用者指定的部分。
+
+- 语法：
+
+  ```html
+  <!-- 子组件定义插槽-->
+  <template>
+    <button>
+      <slot>
+       	<!-- 内容--> 
+       </slot>
+    </button>
+  </template>
+  
+  <!-- 父组件使用插槽-->
+  <template>
+     <MyButton>
+        <span style="color: yellow;">按钮</span>	//按钮
+     </MyButton>
+  </template>
+  <!-- 父组件使用插槽2-->
+  <template>
+    父组件-----{{ message }}
+    <hr>
+    <SlotSubComponent>
+      <p>{{ message }}</p>
+    </SlotSubComponent>
+  </template>
+  
+  ```
+  
+  ==**注**==：插槽内容是在父组件模板中定义的，所以在插槽内容中可以访问到父组件的数据，父组件会顶替掉子组件里面的内容
+
+## 具名插槽
+
+- 问题：在Vue中当需要定义多个插槽时，可以通过具名插槽来区分不同的插槽。具名插槽是给每一个插槽定义一个名称，这样就可以在对应名称的插槽中提供对应的数据了。
+
+- 子组件中语法： <slot name="插槽名称"></slot>
+
+- 父组件中语法：
+
+  ```html
+  <组件名>
+    <template v-slot:插槽名称>
+    	<!-- 插入的内容-->
+    </template>
+  </组件名>
+  ```
+
+
+例子：
+
+```html
+<!-- 父组件-->
+<template>
+  <SubScopeSlot>
+    <template #default="scope">
+      <p>{{ scope }}</p>
+    </template>
+    <template v-slot:header="scope">
+      <p>{{ scope }}</p>
+      <p>{{ scope.message }}</p>
+    </template>
+    <template #content="{ user }">
+      <p>{{ user.name }}</p>
+      <p>{{ user.age }}</p>
+    </template>
+  </SubScopeSlot>
+</template>
+
+
+<!-- 子组件-->
+<template>
+  <slot message="Hello 默认插槽" message2="Hello 默认插槽"></slot>
+  <hr>
+  <slot message="Hello Vue.js" name="header"></slot>
+  <hr>
+  <slot :user="user" name="content"></slot>
+</template>
+
+```
+
+
+
+# 自定义指令
+
+## 私有自定义指令
+
+| 函数名          | 说明                                                 |
+| --------------- | ---------------------------------------------------- |
+| created()       | 在绑定元素的属性前调用                               |
+| beforeMount()   | 在绑定元素被挂载前调用                               |
+| mounted()       | 在绑定元素的父组件及自身的所有子节点都挂载完成后调用 |
+| beforeUpdate()  | 在绑定元素的父组件更新前调用                         |
+| updated()       | 在绑定元素的父组件及自身的所有子节点都更新后调用     |
+| beforeUnmount() | 在绑定元素的父组件卸载前调用                         |
+| unmounted()     | 在绑定元素的父组件卸载后调用                         |
+
+| 参数     | 说明                                         |
+| -------- | -------------------------------------------- |
+| el       | 指令所绑定的元素，可以直接用于操作DOM元素    |
+| binding  | 一个对象，包含很多属性，用于接收属性的参数值 |
+| vnode    | 代表绑定元素底层的虚拟节点                   |
+| prevNode | 之前页面渲染中指令所绑定元素的虚拟节点       |
+
+主要使用mounted()和updata()
+
+### 示例代码
+
+定义的时候：驼峰命名法
+使用的时候：v-
+
+```html
+<template>
+  	<span v-color></span>
+</template>
+<script setup>
+	const vColor = { }
+</script>
+```
+
+
+
+## 全局自定义指令
+
+**演示自定义指令参数的使用方法**
+
+```html
+<template>
+  <p v-fontSize="fontSize">DirectiveComponent组件</p>
+  <button @click=“fontSize = ‘24px’”>更改字号大小</button>
+</template>
+<script setup>
+    import { ref } from 'vue'
+    const fontSize = ref('12px')
+    const vFontSize = {
+      mounted: (el, binding) => { el.style.fontSize = binding.value },
+      updated: (el, binding) => { el.style.fontSize = binding.value }
+	}
+
+</script>
+
+```
+
+**私有自定义指令简化为函数形式**
+
+```html
+<script>
+	const vFontSize = (el, binding) => {
+      el.style.fontSize = binding.value
+	}
+</script>
+```
+
