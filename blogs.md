@@ -15,7 +15,7 @@ title: Blogs
 - [应用笔记](https://yqc74.github.io/blogs/appnote/)<br>
 
 #### 6月
-- [JavaWeb](https://yqc74.github.io/blogs/JavaWeb/)<br>
+- [JavaWeb](https://yqc74.github.io/blogs/Vue/)<br>
 
 <br>
 
