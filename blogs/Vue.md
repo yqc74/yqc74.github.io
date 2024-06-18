@@ -710,3 +710,162 @@ routes: [
 { path: ':id', name: 'MovieDetails', component: () => import ('./components/movieDetails.vue'), props: true }
 ```
 
+
+
+# 网络请求和状态管理
+
+## Axios
+
+### 概念
+
+Axios是一个基于Promise的HTTP库，可以发送get、post等请求，它作用于浏览器和Node.js中。当运行在浏览器时，使用XMLHttpRequest接口发送请求；当运行在Node.js时，使用HTTP对象发送请求。
+
+### 主要特性
+
+- 支持所有的 API。
+- 支持拦截请求和响应。
+- 可以转换请求数据和响应数据，并可以将响应的内容自动转换为JSON类型的数据。
+- 安全性高，客户端支持防御跨站请求伪造（Cross-Site Request Forgery，CSRF）。
+
+### 安装Axios
+
+**通过标签引入**
+
+使用Unpkg或jsDelivr的内容分发网络服务提供的Axios文件，也可以将Axios文件下载至本地再引入
+
+1. 使用Unpkg的CDN服务引入Axios
+
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+2. 使用jsDelivr的CDN服务引入Axios
+
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+**使用包管理工具安装**
+
+使用npm或yarn包管理工具安装Axios。
+yarn add axios@1.2.1 --save
+
+### 使用Axios
+
+1. 将Axios封装成模块，创建src\axios\request.js文件。
+
+   ```js
+   import axios from 'axios'
+   const request = axios.create({
+     timeout: 2000
+   })
+   export default request
+   ```
+
+2. 在组件中导入模块，在src\App.vue文件中导入模块。
+
+   ```vue
+   import request from './axios/request.js'
+   ```
+
+### Axios常用的请求方式
+
+1. 使用Axios发送get请求的基本语法格式
+
+   ```html
+   request({
+     url: '请求路径',
+     method: 'get',
+     params: { 参数 }
+   }).then(res => {
+     console.log(res)
+   }).catch(error => {
+     console.log(error)
+   })
+   ```
+
+2. 使用Axios发送post请求的基本语法格式
+
+   ```html
+   request({
+     url: '请求路径',
+     method: 'post',
+     data: { 参数 }
+   }).then(res => {
+     console.log(res)
+   }).catch(error => {
+     console.log(error)
+   })
+   ```
+
+
+## Vuex
+
+### 概念
+
+Vuex是一个专为Vue开发的状态管理库，它采用集中式存储的方式管理应用的所有组件的状态，解决了多组件数据通信的问题，使数据操作更加简洁
+
+### 安装方式
+
+**通过标签引入**
+
+使用Unpkg的CDN服务提供的Vuex文件，也可以将Vuex文件下载至本地再引入。
+
+- 使用Unpkg的CDN服务引入Vuex。
+
+  <script src="https://unpkg.com/vuex@next"></script>
+
+**使用包管理工具安装**
+
+使用npm或yarn包管理工具安装Vuex。
+
+```
+yarn add vuex@4.0.2 --save
+```
+
+### 使用Vuex
+
+在项目中使用Vuex时，通常的做法是先在项目中创建一个store模块，然后导入并挂载store模块。store模块是用于管理状态数据的仓库
+
+1. 在项目中使用Vuex时，通常的做法是先在项目中创建一个store模块，然后导入并挂载store模块。store模块是用于管理状态数据的仓库，创建src\store\index.js文件
+
+   ```js
+   import { createStore } from 'vuex'
+   const store = createStore({
+     state: {},
+     mutations: {},
+     actions: {},
+     getters: {},
+     modules: {}
+   })
+   export default store
+   
+   <!-- 样例-->
+   import { createStore } from 'vuex'
+   const store = createStore({
+     state: {
+       add: 0,
+       reduce: 100
+     },
+     mutations: {
+       increase(state) {
+         state.add++
+       },
+     decrease(state) {
+         state.reduce--
+       }
+     },
+     actions: {},
+     modules: {} 
+   })
+   export default store
+   ```
+
+2. 在src\main.js文件中导入并挂载store模块。
+
+   ```js
+   import { createApp } from 'vue'
+   import './style.css'
+   import store from './store'	// 导入store模块
+   import App from './App.vue'
+   const app = createApp(App)
+   app.use(store) 			// 挂载store模块
+   app.mount('#app')
+   ```
+
